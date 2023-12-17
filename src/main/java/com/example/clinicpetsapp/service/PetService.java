@@ -5,6 +5,8 @@ import com.example.clinicpetsapp.domain.Pet;
 import com.example.clinicpetsapp.repository.PetOwnerRepo;
 import com.example.clinicpetsapp.repository.PetRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -24,8 +26,8 @@ public class PetService {
             return null;
         }
     }
-    public List<Pet> displayAllPets() {
-        return petRepo.findAll();
+    public Page<Pet> displayAllPets(Pageable pageable) {
+        return petRepo.findAll(pageable);
 
     }
     public boolean PetExist(Long code) {

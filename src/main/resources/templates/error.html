@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+</head>
+<body>
+
+<h2>Error Occurred</h2>
+<p th:text="${error}"></p>
+<a class="btn btn-success btn-lg" th:href="@{/owners}" role="button">Owner</a> <br>
+<a class="btn btn-success btn-lg" th:href="@{/pets}" role="button">Pets</a>
+
+
+</body>
+</html>

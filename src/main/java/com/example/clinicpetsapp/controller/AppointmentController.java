@@ -1,7 +1,6 @@
 package com.example.clinicpetsapp.controller;
 
 import com.example.clinicpetsapp.domain.AppointmentInformation;
-import com.example.clinicpetsapp.domain.Pet;
 import com.example.clinicpetsapp.domain.PetOwner;
 import com.example.clinicpetsapp.domain.Veterinarian;
 import com.example.clinicpetsapp.service.AppointmentService;
@@ -53,15 +52,6 @@ public class AppointmentController {
         List<Veterinarian> vetList = veterinarianService.displayAllVeterinarians();
         model.addAttribute("veterinary", vetList);
 
-        //create a list of petOwners
-        List<PetOwner> ownerList = ownerService.displayAllOwners();
-        model.addAttribute("listOwners", ownerList);
-
-        //create a list of pets
-
-        List<Pet> pets = petService.displayAllPets();
-        model.addAttribute("petlist", pets);
-
 
 
         return "create_appointment";
@@ -77,20 +67,7 @@ public class AppointmentController {
 
     @GetMapping("/appointments/edit/{id}")
     public String editAppointmentsForm(@PathVariable Long id, Model model){
-        model.addAttribute("appointment", appointmentService.getAppointmentByCode(id) );
-
-
-        List<Veterinarian> veterinaryL = veterinarianService.displayAllVeterinarians();
-        model.addAttribute("vets", veterinaryL);
-
-        //create a list of petOwners
-        List<PetOwner> owners = ownerService.displayAllOwners();
-        model.addAttribute("owners", owners);
-
-        //create a list of pets
-
-        List<Pet> pets = petService.displayAllPets();
-        model.addAttribute("pets", pets);
+        model.addAttribute("appointment", appointmentService.AppointmentExist(id) );
         return "edit_appointment";
 
     }

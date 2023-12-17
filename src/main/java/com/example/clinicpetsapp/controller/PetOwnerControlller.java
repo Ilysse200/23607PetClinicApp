@@ -4,13 +4,13 @@ import com.example.clinicpetsapp.Validation.PetOwnerValidator;
 import com.example.clinicpetsapp.domain.PetOwner;
 import com.example.clinicpetsapp.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class PetOwnerControlller {
@@ -26,8 +26,19 @@ public class PetOwnerControlller {
     }
 
     @GetMapping("/owners")
-    public String listOwners(Model model){
-        model.addAttribute("owners", ownerService.displayAllOwners());
+    public String listOwners(@RequestParam(name = "ownerId", required = false) Long ownerId, Model model) {
+        if (ownerId != null) {
+            // Search by ownerId
+            PetOwner owner = ownerService.getPetOwnerByCode(ownerId);
+            if (owner != null) {
+                model.addAttribute("owners", List.of(owner));
+            } else {
+                model.addAttribute("owners", List.of()); // Empty list for no results
+            }
+        } else {
+            // Display all owners
+            model.addAttribute("owners", ownerService.displayAllOwners());
+        }
         return "owners";
 
     }
@@ -93,11 +104,27 @@ public class PetOwnerControlller {
     }
 
     @GetMapping("/owners/{id}")
-    public  String deleteOwner(@PathVariable Long id){
-        ownerService.deleteOwner(id);
+    public String deleteOwner(@PathVariable Long id, Model model) {
+        try {
+            ownerService.deleteOwner(id);
+        } catch (DataIntegrityViolationException e) {
+            model.addAttribute("error", "Cannot delete owner with associated pets. Remove the associated appointment first.");
+            model.addAttribute("owners", ownerService.displayAllOwners());
+            return "error";
+        }
         return "redirect:/owners";
-
     }
+    @ControllerAdvice
+    public class GlobalExceptionHandler {
+
+        @ExceptionHandler(DataIntegrityViolationException.class)
+        public String handleDataIntegrityViolationException(
+                DataIntegrityViolationException ex, Model model) {
+            model.addAttribute("error", "Data integrity violation: " + ex.getMessage());
+            return "error"; // You can customize the error page or redirect as needed
+        }
+    }
+
 
 
 }
