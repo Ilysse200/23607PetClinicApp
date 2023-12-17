@@ -1,4 +1,3 @@
-Pet Clinic Management System
 
 ## Project Requirement
 
