@@ -4,7 +4,7 @@ Pet Clinic Management System
 
 - **purpose of the project:**
 
-The Pet Clinic Management System is a Java-based web application developed using Spring Boot, MySQL, and Thymeleaf. It is designed to streamline the operations of a veterinary clinic, focusing on managing information related to pets, their owners, appointments, and veterinarians. The application is a single-user system where all CRUD operations are handled by the administrator.
+  The Pet Clinic Management System is a Java-based web application developed using Spring Boot, MySQL, and Thymeleaf. It is designed to streamline the operations of a veterinary clinic, focusing on managing information related to pets, their owners, appointments, and veterinarians. The application is a single-user system where all CRUD operations are handled by the administrator.
 
 - **Expected Outcomes:**
   - Pet Management: CRUD operations for pets.
