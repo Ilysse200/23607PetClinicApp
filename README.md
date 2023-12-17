@@ -24,7 +24,6 @@ Pet Clinic Management System
 
 - **source code:**
   - The source code for the project is hosted on GitHub: https://github.com/Ilysse200/23607PetClinicApp.git
-
 ## Database schema
 
 - **Table definitions**
