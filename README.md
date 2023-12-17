@@ -30,33 +30,33 @@ Pet Clinic Management System
 - **Table definitions**
 
 1. Pet
-petId (PK)
-petName
-petBreed
-petArrivalDate
-petType
-ownerId (FK)
+    - petId (PK)
+    - petName
+    - petBreed
+    - petArrivalDate
+    - petType
+    - ownerId (FK)
 
 2. PetOwner
-ownerId (PK)
-ownerFirstName
-ownerLastName
-ownerTelephoneNumber
-ownerCity
+    - ownerId (PK)
+    - ownerFirstName
+    - ownerLastName
+    - ownerTelephoneNumber
+    - ownerCity
 
 3. Appointment:
-appointmentId (PK)
-appointmentDate
-appointmentReason
-petId (FK)
-veterinarianId (FK)
-ownerId (FK)
+    - appointmentId (PK)
+    - appointmentDate
+    - appointmentReason
+    - petId (FK)
+    - veterinarianId (FK)
+    - ownerId (FK)
 
 4. Veterinarian:
-veterinarianId (PK)
-vetFirstName
-vetLastName
-vetSpecialty
+    - veterinarianId (PK)
+    - vetFirstName
+    - vetLastName
+    - vetSpecialty
 
 ## User Documentation
 
