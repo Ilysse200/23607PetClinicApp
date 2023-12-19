@@ -57,6 +57,7 @@
     - vetSpecialty
   
 - **Diagram**
+<img width="464" alt="ER_clinic" src="https://github.com/Ilysse200/23607PetClinicApp/assets/120116539/5b1ad617-0563-4de2-952c-cd0ab4709359">
 
 
 ## User Documentation
