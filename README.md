@@ -55,6 +55,9 @@
     - vetFirstName
     - vetLastName
     - vetSpecialty
+  
+- **Diagram**
+
 
 ## User Documentation
 
